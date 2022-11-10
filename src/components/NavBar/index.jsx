@@ -3,10 +3,10 @@ import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from "react-router-dom";
+import { useState } from 'react'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -50,14 +50,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
 export default function NavBar({ pokemonFilter }) {
+
   return (
     <Box sx={{ flexGrow: 1 , marginBottom: "2em"}}>
       <AppBar position="static" sx={{backgroundColor: "black"}}>
         <Toolbar>
             <Box display="flex" justifyContent="space-between" width="100%" maxHeight="2.5em">
                 <Link to={"/"}> <Box component="img" src='/assets/logo.png' height="8em" position="relative" top="-2.7em" /> </Link>
-                <Search onChange={(e) => pokemonFilter(e.target.value)}>
+                <Search onChange={(e) => {pokemonFilter(e.target.value.toLowerCase())}}>
                     <SearchIconWrapper>
                         <SearchIcon />
                     </SearchIconWrapper>

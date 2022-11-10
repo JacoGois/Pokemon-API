@@ -1,3 +1,4 @@
+import { Search } from '@mui/icons-material'
 import { Grid } from '@mui/material'
 import { Container } from '@mui/system'
 import axios from 'axios'
@@ -18,6 +19,7 @@ const Home = () => {
             endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
         }
 
+        console.log(endpoints)
         axios.all(endpoints.map((endpoint) => axios.get(endpoint)))
         .then((res) => {
             setPokemons(res)
@@ -31,18 +33,19 @@ const Home = () => {
     },[])
 
     const pokemonFilter = (name) => {
-        let filteredPokemons = [];
-        if(name === "") {
-            getPokemons()
-        }
-        for (let i in pokemons) {
-            if(pokemons[i].data.name.includes(name)){
-                filteredPokemons.push(pokemons[i])
-            }
-        }
-        setPokemons(filteredPokemons)
-    }
 
+            let filteredPokemons = [];
+            if(name === "") {
+                getPokemons()
+            }
+            for (let i in pokemons) {
+                if(pokemons[i].data.name.includes(name)){
+                    filteredPokemons.push(pokemons[i])
+                } 
+            }
+            setPokemons(filteredPokemons)
+           
+    }
   return (
     <div>
         <NavBar pokemonFilter = {pokemonFilter} />
