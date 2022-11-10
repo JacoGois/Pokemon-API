@@ -2,10 +2,10 @@ import { Box, Grid } from '@mui/material'
 import { Container } from '@mui/system'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import NavBar from '../components/NavBar'
 import { Skeletons } from '../components/Skeletons'
 import { useParams } from "react-router-dom";
 import PokemonCard2 from '../components/PokemonCard/index2'
+import NavBar2 from '../components/NavBar/index2'
 
 
 export const PokeHome = () => {
@@ -46,7 +46,7 @@ export const PokeHome = () => {
  
   return (
     <div>
-        <NavBar pokemonFilter = {pokemonFilter} />
+        <NavBar2 pokemonFilter = {pokemonFilter} />
         <Container > 
             {loading ? <Skeletons/> 
             : 
@@ -58,7 +58,6 @@ export const PokeHome = () => {
                         </Box>
                     )})}
             </Box>}
-            
         </Container>
     </div>
     )
